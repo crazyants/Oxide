@@ -71,7 +71,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "hWZDUYo5+xznhvh98Mla+Wql3F+8aoUoe0d20RJYQNE=",
+            "MSILHash": "DTpVuqLNM+mEsnp0mWS255ooCv2OrYljkTwOWAStM04=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -229,7 +229,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "Sq6xAueVQCrFXbM5/hm045+lXtSn1sY4q7D2EYDhRM0=",
+            "MSILHash": "87vxDa5zitva6U4LZvCaAr8xM+W9JReh0IfloDWMWDs=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -317,7 +317,7 @@
                 "uLink.NetworkPlayer"
               ]
             },
-            "MSILHash": "h5BKyFjxusmxUq36E1jjGkLnLqYtvT9W1rtFHmepPdY=",
+            "MSILHash": "ebuePo7VgP9MSQiMi8q0H5LMk1vUTiYGUT7MN6k8ucs=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -369,7 +369,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "hWZDUYo5+xznhvh98Mla+Wql3F+8aoUoe0d20RJYQNE=",
+            "MSILHash": "DTpVuqLNM+mEsnp0mWS255ooCv2OrYljkTwOWAStM04=",
             "BaseHookName": "OnServerCommand",
             "HookCategory": "_Patches"
           }
@@ -377,7 +377,7 @@
         {
           "Type": "Modify",
           "Hook": {
-            "InjectionIndex": 2646,
+            "InjectionIndex": 2675,
             "RemoveCount": 1,
             "Instructions": [
               {
@@ -400,7 +400,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "hWZDUYo5+xznhvh98Mla+Wql3F+8aoUoe0d20RJYQNE=",
+            "MSILHash": "DTpVuqLNM+mEsnp0mWS255ooCv2OrYljkTwOWAStM04=",
             "BaseHookName": "FixDupeCommand [patch]",
             "HookCategory": "_Patches"
           }
@@ -979,7 +979,7 @@
                 "EntityEffectSourceData"
               ]
             },
-            "MSILHash": "C3tZib1JviERZVzISFoh3uOHMt3NcLuGeEXGpYAfa9w=",
+            "MSILHash": "f7rRCLCwiVeoRs6OzfNp//Qx4pvMNcUqaHMozxOBzso=",
             "BaseHookName": null,
             "HookCategory": "Resource"
           }
@@ -1360,11 +1360,11 @@
                 "UnityEngine.Vector3",
                 "UnityEngine.Quaternion",
                 "System.Int32",
-                "System.Byte",
+                "System.UInt16",
                 "NetworkInstantiateConfigInternal"
               ]
             },
-            "MSILHash": "MxWCZfcIDQuCkUPBs2DV+10I8FDI4xGjOnqTAMXMgLY=",
+            "MSILHash": "FY6BH9n0ftqUaTHS/Y5GCK7kRf+rq9QcJC2gFV6alv8=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
