@@ -10,22 +10,7 @@ namespace Oxide.Game.Hurtworld
     public partial class HurtworldCore : CSPlugin
     {
         #region Player Hooks
-
-        /// <summary>
-        /// Called when the player attempts to craft an item
-        /// </summary>
-        /// <param name="crafter"></param>
-        /// <param name="recipe"></param>
-        [HookMethod("ICanCraft")]
-        private object ICanCraft(Crafter crafter, ICraftable recipe)
-        {
-            var session = Player.Find(crafter.networkView.owner);
-            if (session == null) return null;
-
-            // Call game hook
-            return (bool)Interface.Call("CanCraft", session, recipe);
-        }
-
+        
         /// <summary>
         /// Called when a user is attempting to connect
         /// </summary>
@@ -56,6 +41,20 @@ namespace Oxide.Game.Hurtworld
         }
 
         /// <summary>
+        /// Called when the player sends a chat message
+        /// </summary>
+        /// <param name="session"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        [HookMethod("IOnPlayerChat")]
+        private object IOnPlayerChat(PlayerSession session, string message)
+        {
+            var chatSpecific = Interface.Call("OnPlayerChat", session, message);
+            var chatCovalence = Interface.Call("OnUserChat", session.IPlayer, message);
+            return chatSpecific ?? chatCovalence;
+        }
+
+        /// <summary>
         /// Called when the player has connected
         /// </summary>
         /// <param name="name"></param>
@@ -82,7 +81,11 @@ namespace Oxide.Game.Hurtworld
             // Let covalence know
             Covalence.PlayerManager.PlayerConnected(session);
             var iplayer = Covalence.PlayerManager.FindPlayerById(session.SteamId.ToString());
-            if (iplayer != null) Interface.Call("OnUserConnected", iplayer);
+            if (iplayer != null)
+            {
+                session.IPlayer = iplayer;
+                Interface.Call("OnUserConnected", session.IPlayer);
+            }
         }
 
         /// <summary>
@@ -93,8 +96,7 @@ namespace Oxide.Game.Hurtworld
         private void OnPlayerDisconnected(PlayerSession session)
         {
             // Let covalence know
-            var iplayer = Covalence.PlayerManager.FindPlayerById(session.SteamId.ToString());
-            if (iplayer != null) Interface.Call("OnUserDisconnected", iplayer, "Unknown");
+            Interface.Call("OnUserDisconnected", session.IPlayer, "Unknown");
             Covalence.PlayerManager.PlayerDisconnected(session);
         }
 
@@ -146,14 +148,17 @@ namespace Oxide.Game.Hurtworld
         private void IOnTakeDamage(EntityEffectFluid effect, EntityStats target, EntityEffectSourceData source)
         {
             if (effect == null || target == null || source?.Value == 0) return;
+
             var entity = target.GetComponent<AIEntity>();
             if (entity != null)
             {
                 Interface.CallHook("OnEntityTakeDamage", entity, source);
                 return;
             }
+
             var networkView = target.GetComponent<uLinkNetworkView>();
             if (networkView == null) return;
+
             var session = GameManager.Instance.GetSession(networkView.owner);
             if (session != null) Interface.CallHook("OnPlayerTakeDamage", session, source);
         }

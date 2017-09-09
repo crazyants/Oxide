@@ -79,13 +79,13 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 22,
+            "InjectionIndex": 28,
             "ReturnBehavior": 1,
             "ArgumentBehavior": 4,
             "ArgumentString": "l0, a0",
             "HookTypeName": "Simple",
-            "Name": "IOnPlayerChat [internal]",
-            "HookName": "IOnPlayerChat",
+            "Name": "IOnPlayerCommand [internal]",
+            "HookName": "IOnPlayerCommand",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "ChatManagerServer",
             "Flagged": false,
@@ -1427,8 +1427,8 @@
           "Hook": {
             "InjectionIndex": 0,
             "ReturnBehavior": 1,
-            "ArgumentBehavior": 3,
-            "ArgumentString": null,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "this.networkView.owner, a0",
             "HookTypeName": "Simple",
             "Name": "CanCraft",
             "HookName": "CanCraft",
@@ -1456,8 +1456,8 @@
             "ArgumentBehavior": 2,
             "ArgumentString": null,
             "HookTypeName": "Simple",
-            "Name": "CanTake",
-            "HookName": "CanTake",
+            "Name": "CanTakeFromInventory",
+            "HookName": "CanTakeFromInventory",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "InventoryExtensions",
             "Flagged": false,
@@ -1483,8 +1483,8 @@
             "ArgumentBehavior": 2,
             "ArgumentString": null,
             "HookTypeName": "Simple",
-            "Name": "CanPut",
-            "HookName": "CanPut",
+            "Name": "CanPutInInventory",
+            "HookName": "CanPutInInventory",
             "AssemblyName": "Assembly-CSharp.dll",
             "TypeName": "InventoryExtensions",
             "Flagged": false,
@@ -1501,10 +1501,45 @@
             "BaseHookName": null,
             "HookCategory": "Player"
           }
+        },
+        {
+          "Type": "Simple",
+          "Hook": {
+            "InjectionIndex": 52,
+            "ReturnBehavior": 1,
+            "ArgumentBehavior": 4,
+            "ArgumentString": "l0, a0",
+            "HookTypeName": "Simple",
+            "Name": "IOnPlayerChat [internal]",
+            "HookName": "IOnPlayerChat",
+            "AssemblyName": "Assembly-CSharp.dll",
+            "TypeName": "ChatManagerServer",
+            "Flagged": false,
+            "Signature": {
+              "Exposure": 2,
+              "Name": "SendPlayerMessage",
+              "ReturnType": "System.Void",
+              "Parameters": [
+                "System.String",
+                "uLink.NetworkMessageInfo"
+              ]
+            },
+            "MSILHash": "kUQj4yQ9LCQx+T0zgk357cW6hbtsUnujJHRwq2WmJ/U=",
+            "BaseHookName": "IOnPlayerCommand [internal]",
+            "HookCategory": "Player"
+          }
         }
       ],
       "Modifiers": [],
-      "Fields": []
+      "Fields": [
+        {
+          "Name": "IPlayer",
+          "AssemblyName": "Assembly-CSharp.dll",
+          "TypeName": "PlayerSession",
+          "FieldType": "Oxide.Core|Oxide.Core.Libraries.Covalence.IPlayer",
+          "Flagged": false
+        }
+      ]
     }
   ]
 }

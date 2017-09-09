@@ -251,29 +251,15 @@ namespace Oxide.Game.Hurtworld
         }
 
         /// <summary>
-        /// Called when the player sends a message
+        /// Called when the player sends a chat command
         /// </summary>
         /// <param name="session"></param>
         /// <param name="message"></param>
-        [HookMethod("IOnPlayerChat")]
-        private object IOnPlayerChat(PlayerSession session, string message)
+        [HookMethod("IOnPlayerCommand")]
+        private object IOnPlayerCommand(PlayerSession session, string command)
         {
-            if (message.Trim().Length <= 1) return true;
-
-            // Get the covalence player
-            var iplayer = Covalence.PlayerManager.FindPlayerById(session.SteamId.ToString());
-            if (iplayer == null) return null;
-
-            // Is it a chat command?
-            if (!message.StartsWith("/"))
-            {
-                var chatSpecific = Interface.Call("OnPlayerChat", session, message);
-                var chatCovalence = iplayer != null ? Interface.Call("OnUserChat", iplayer, message) : null;
-                return chatSpecific ?? chatCovalence;
-            }
-
             // Get the full command
-            var str = message.TrimStart('/');
+            var str = command.TrimStart('/');
 
             // Parse it
             string cmd;
@@ -283,15 +269,15 @@ namespace Oxide.Game.Hurtworld
 
             // Is the command blocked?
             var blockedSpecific = Interface.Call("OnPlayerCommand", session, cmd, args); // TODO: Deprecate OnChatCommand
-            var blockedCovalence = Interface.Call("OnUserCommand", iplayer, cmd, args);
+            var blockedCovalence = Interface.Call("OnUserCommand", session.IPlayer, cmd, args);
             if (blockedSpecific != null || blockedCovalence != null) return true;
 
             // Is it a covalance command?
-            if (Covalence.CommandSystem.HandleChatMessage(iplayer, message)) return true;
+            if (Covalence.CommandSystem.HandleChatMessage(session.IPlayer, command)) return true;
 
             // Is it a regular chat command?
             if (!cmdlib.HandleChatCommand(session, cmd, args))
-                iplayer.Reply(lang.GetMessage("UnknownCommand", this, iplayer.Id), cmd);
+                session.IPlayer.Reply(lang.GetMessage("UnknownCommand", this, session.IPlayer.Id), cmd);
 
             return true;
         }
