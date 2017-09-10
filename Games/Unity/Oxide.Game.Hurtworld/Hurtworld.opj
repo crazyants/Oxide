@@ -79,7 +79,7 @@
         {
           "Type": "Simple",
           "Hook": {
-            "InjectionIndex": 28,
+            "InjectionIndex": 27,
             "ReturnBehavior": 1,
             "ArgumentBehavior": 4,
             "ArgumentString": "l0, a0",
