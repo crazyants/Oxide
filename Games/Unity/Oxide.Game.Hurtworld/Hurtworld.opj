@@ -71,7 +71,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "AMPqWUKtYxHDuITkNZybpxowqm6smWbrIUGpmuAmIkQ=",
+            "MSILHash": "toc0ggXAAilGdTx+toTahoreW1lVdRHz8rP4fNlRkZo=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -229,7 +229,7 @@
               "ReturnType": "System.Void",
               "Parameters": []
             },
-            "MSILHash": "gUGQr3B6SYM6RviWlxevoWkCYnRoZtHPV0qmZRSwiow=",
+            "MSILHash": "l7uXyWAXC+AWayDIheq7sEBVe0AtBRx3rEvIDTyNwfs=",
             "BaseHookName": null,
             "HookCategory": "Server"
           }
@@ -317,7 +317,7 @@
                 "uLink.NetworkPlayer"
               ]
             },
-            "MSILHash": "iYYYABsggzawJ+3CTt4pAK1Q9O+nWbTcH4Q0cBum37I=",
+            "MSILHash": "islkJ3l7lETwV2y6CJt33jVMJIz+/wPxiFAI/lCu25c=",
             "BaseHookName": null,
             "HookCategory": "Player"
           }
@@ -369,7 +369,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "AMPqWUKtYxHDuITkNZybpxowqm6smWbrIUGpmuAmIkQ=",
+            "MSILHash": "toc0ggXAAilGdTx+toTahoreW1lVdRHz8rP4fNlRkZo=",
             "BaseHookName": "OnServerCommand",
             "HookCategory": "_Patches"
           }
@@ -377,7 +377,7 @@
         {
           "Type": "Modify",
           "Hook": {
-            "InjectionIndex": 2539,
+            "InjectionIndex": 2574,
             "RemoveCount": 1,
             "Instructions": [
               {
@@ -400,7 +400,7 @@
                 "System.String"
               ]
             },
-            "MSILHash": "AMPqWUKtYxHDuITkNZybpxowqm6smWbrIUGpmuAmIkQ=",
+            "MSILHash": "toc0ggXAAilGdTx+toTahoreW1lVdRHz8rP4fNlRkZo=",
             "BaseHookName": "FixDupeCommand [patch]",
             "HookCategory": "_Patches"
           }
@@ -871,7 +871,7 @@
                 "EntityEffectSourceData"
               ]
             },
-            "MSILHash": "iYn9JcMHPtPg3McsiGCbL3Tj4brIH8pzQ4o0AKX6kW4=",
+            "MSILHash": "mWAtufGBNm292BpAQmahsF24yAbcRqKSL/kSs1haR38=",
             "BaseHookName": null,
             "HookCategory": "Entity"
           }
